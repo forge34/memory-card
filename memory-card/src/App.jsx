@@ -4,12 +4,15 @@ import "./style/main.css"
 import Cardcontainer from './components/cardcontainer'
 
 function App() {
+  const [score,setScore] = useState(0)
+  const [bestScore,setBestScore] = useState(0)
+
 
   return (
-    <>
-    <Header></Header>
-    <Cardcontainer></Cardcontainer>
-    </>
+    <div className='main-container'>
+    <Header score={score} bestScore={bestScore}></Header>
+    <Cardcontainer setScore={setScore}></Cardcontainer>
+    </div>
   )
 }
 

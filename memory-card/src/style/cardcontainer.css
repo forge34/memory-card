@@ -1,0 +1,7 @@
+.card-container {
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
+    grid-template-areas: 
+    "c1 c2 c3 c4";
+}

@@ -1,0 +1,68 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  height: 214.92px;
+  transition: transform 0.4s ease-in 0s;
+}
+
+.card:hover {
+    transform: scale(1.2);
+}
+
+.back-img {
+  max-width: 150px;
+}
+
+.back {
+  position: absolute;
+}
+
+.front {
+  position: absolute;
+  visibility: hidden;
+}
+
+.anim {
+  transform-style: preserve-3d;
+  animation: flip 2s linear 0.1s 1;
+  animation-fill-mode: forwards;
+  height: 100%;
+}
+
+.end .back {
+  display: none;
+}
+
+.end .front {
+    background-color: burlywood;
+  border-style: solid;
+  visibility: visible;
+  transform: rotateY(-180deg);
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.card-name {
+  margin-top: auto;
+  margin-bottom: 10%;
+  font-size: 1.5em;
+}
+
+.front-img {
+  width: 150px;
+}
+
+@keyframes flip {
+  from {
+    transform: rotateY(0);
+  }
+
+  to {
+    transform: rotateY(180deg);
+  }
+}

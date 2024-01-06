@@ -1,4 +1,15 @@
 * {
     margin:0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+.main-container {
+    background-image: url("../../bg.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: grid;
+    grid-template-columns: 100dvw;
+    grid-template-rows: 10dvh 90dvh;
 }
