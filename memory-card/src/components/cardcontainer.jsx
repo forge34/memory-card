@@ -5,7 +5,9 @@ import Card from "./card";
 export default function Cardcontainer({setScore,setBest}) {
 
   function handleScore(){
-    setScore((prev) => prev+1)
+    setScore((prev) => {
+      return prev + 1
+    })
   }
   return (
     <div className="card-container">

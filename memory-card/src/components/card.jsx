@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../style/card.css";
 
-export default function Card({setScore}) {
+export default function Card({ setScore }) {
   const [img, setImg] = useState("");
   const [isReady, setIsReady] = useState(false);
   const [end, setEnd] = useState(false);
@@ -9,9 +9,7 @@ export default function Card({setScore}) {
 
   useEffect(() => {
     setIsReady(true);
-  }, []);
 
-  useEffect(() => {
     const random = () => {
       return Math.floor(Math.random() * 6) + 1;
     };
@@ -26,16 +24,19 @@ export default function Card({setScore}) {
     }
 
     data();
-  }, []);
+  }, [isReady]);
 
   const ready = isReady ? "anim" : "";
   const ended = end ? "end" : "";
 
+  function handleClick() {
+    setEnd(false);
+    setScore();
+    setIsReady(false);
+  }
+
   return (
-    <div
-      className="card"
-      onClick={setScore}
-    >
+    <div className="card" onClick={handleClick}>
       <div
         className={ready + " " + ended}
         onAnimationEnd={() => {
@@ -43,7 +44,7 @@ export default function Card({setScore}) {
         }}
       >
         <div className="back">
-          <img className="back-img" src="../../public/back.png"></img>
+          <img className="back-img" src="../../back.png"></img>
         </div>
 
         <div className="front">
