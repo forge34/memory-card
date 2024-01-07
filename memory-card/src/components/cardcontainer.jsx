@@ -7,13 +7,19 @@ export default function Cardcontainer({ setScore, setBest }) {
   const [isReady, setIsReady] = useState(false);
   const [end, setEnd] = useState(false);
 
-  function handleScore() {
-    setScore((prev) => {
-      return prev + 1;
-    });
+  function handleClick(e) {
+    const parent =
+      e.target.parentNode.parentNode.parentNode;
 
-    setEnd(false);
-    setIsReady(false);
+
+    if (parent.getAttribute("class") == "card") {
+      setScore((prev) => {
+        return prev + 1;
+      });
+
+      setEnd(false);
+      setIsReady(false);
+    }
   }
 
   function handleAnimation(e) {
@@ -26,7 +32,7 @@ export default function Cardcontainer({ setScore, setBest }) {
     <div
       className="card-container"
       onAnimationEnd={handleAnimation}
-      onClick={handleScore}
+      onClick={handleClick}
     >
       <Card end={end} isReady={isReady} setReady={setIsReady}></Card>
       <Card end={end} isReady={isReady} setReady={setIsReady}></Card>
