@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../style/card.css";
 
-export default function Card({
-  hClick,
-  onAnimEnd,
-  animStart,
-  animReady,
-}) {
+export default function Card({ hClick, onAnimEnd, animStart, animReady }) {
   const [img, setImg] = useState("");
   const [name, setName] = useState("");
+  const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
     const random = () => {
@@ -34,10 +30,20 @@ export default function Card({
     <div
       className="card"
       onClick={() => {
+        if (disabled) return
         hClick(name);
       }}
     >
-      <div className={start + " " + end} onAnimationEnd={onAnimEnd}>
+      <div
+        className={start + " " + end}
+        onAnimationStart={() => {
+          setDisabled(true)
+        }}
+        onAnimationEnd={() => {
+          onAnimEnd()
+          setDisabled(false);
+        }}
+      >
         <div className="back">
           <img className="back-img" src="../../back.png"></img>
         </div>

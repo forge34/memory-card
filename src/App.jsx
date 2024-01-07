@@ -5,12 +5,13 @@ import Cardcontainer from './components/cardcontainer'
 
 function App() {
   const [score,setScore] = useState(0)
+  const [bestScore,setBestScore] = useState(0)
 
 
   return (
     <div className='main-container'>
-    <Header score={score}></Header>
-    <Cardcontainer setScore={setScore}></Cardcontainer>
+    <Header score={score} bestScore={bestScore}></Header>
+    <Cardcontainer setScore={setScore} setBestScore={setBestScore}></Cardcontainer>
     </div>
   )
 }

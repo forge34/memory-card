@@ -3,7 +3,7 @@ import "../style/cardcontainer.css";
 import Card from "./card";
 import { useState } from "react";
 
-export default function Cardcontainer({ setScore }) {
+export default function Cardcontainer({ setScore ,setBestScore}) {
   const [animEnd, setAnimEnd] = useState(false);
   const [startAnim ,setAnimStart] = useState(true)
   const [cardList ,setCardList] = useState(new Array(0))
@@ -16,6 +16,8 @@ export default function Cardcontainer({ setScore }) {
     if (!cardList.includes(name)){
       setCardList([...cardList,name])
       setScore((prev) => prev + 1);
+      setBestScore((prev) => prev+1)
+      console.log(cardList)
     }
     else {
       setScore(0)
