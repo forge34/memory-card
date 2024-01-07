@@ -16,8 +16,6 @@ export default function Cardcontainer({ setScore, setBest }) {
     setIsReady(false);
   }
 
-  function handleClick() {}
-
   function handleAnimation(e) {
     if (e.target.classList[0] == "anim") {
       setEnd(true);
