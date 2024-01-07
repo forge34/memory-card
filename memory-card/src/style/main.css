@@ -10,6 +10,6 @@
     background-size: cover;
     background-repeat: no-repeat;
     display: grid;
-    grid-template-columns: 100dvw;
+    grid-template-columns: 90dvw;
     grid-template-rows: 10dvh 90dvh;
 }

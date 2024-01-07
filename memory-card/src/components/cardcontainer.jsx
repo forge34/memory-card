@@ -3,41 +3,35 @@ import "../style/cardcontainer.css";
 import Card from "./card";
 import { useState } from "react";
 
-export default function Cardcontainer({ setScore, setBest }) {
-  const [isReady, setIsReady] = useState(false);
-  const [end, setEnd] = useState(false);
+export default function Cardcontainer({ setScore }) {
+  const [animEnd, setAnimEnd] = useState(false);
+  const [startAnim ,setAnimStart] = useState(true)
 
-  function handleClick(e) {
-    const parent =
-      e.target.parentNode.parentNode.parentNode;
-
-
-    if (parent.getAttribute("class") == "card") {
-      setScore((prev) => {
-        return prev + 1;
-      });
-
-      setEnd(false);
-      setIsReady(false);
-    }
+  function handleClick(name) {
+    setScore((prev) => prev + 1);
+    setAnimEnd(false)
+    setAnimStart(true)
   }
 
-  function handleAnimation(e) {
-    if (e.target.classList[0] == "anim") {
-      setEnd(true);
-    }
+  function handleAnimEnd() {
+    setAnimEnd(true);
+    setAnimStart(false);
+
   }
+
+  const probs = {
+    hClick: handleClick,
+    onAnimEnd: handleAnimEnd,
+    animReady: animEnd,
+    animStart:startAnim,
+  };
 
   return (
-    <div
-      className="card-container"
-      onAnimationEnd={handleAnimation}
-      onClick={handleClick}
-    >
-      <Card end={end} isReady={isReady} setReady={setIsReady}></Card>
-      <Card end={end} isReady={isReady} setReady={setIsReady}></Card>
-      <Card end={end} isReady={isReady} setReady={setIsReady}></Card>
-      <Card end={end} isReady={isReady} setReady={setIsReady}></Card>
+    <div className="card-container">
+      <Card {...probs}></Card>
+      <Card {...probs}></Card>
+      <Card {...probs}></Card>
+      <Card {...probs}></Card>
     </div>
   );
 }

@@ -1,16 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../style/card.css";
 
-
-export default function Card({ end ,isReady,setReady }) {
+export default function Card({
+  hClick,
+  onAnimEnd,
+  animStart,
+  animReady,
+}) {
   const [img, setImg] = useState("");
   const [name, setName] = useState("");
 
   useEffect(() => {
-    setReady(true);
-
     const random = () => {
-      return Math.floor(Math.random() * 6) + 1;
+      return Math.floor(Math.random() * 15) + 1;
     };
 
     async function data() {
@@ -23,16 +25,19 @@ export default function Card({ end ,isReady,setReady }) {
     }
 
     data();
-  }, [isReady, setReady]);
+  }, [animStart]);
 
-  const ready = isReady ? "anim" : "";
-  const ended = end ? " end" : "";
+  const end = animReady ? "end" : "";
+  const start = animStart ? "anim" : "";
 
   return (
-    <div className="card">
-      <div
-        className={ready + ended}
-      >
+    <div
+      className="card"
+      onClick={() => {
+        hClick(name);
+      }}
+    >
+      <div className={start + " " + end} onAnimationEnd={onAnimEnd}>
         <div className="back">
           <img className="back-img" src="../../back.png"></img>
         </div>
