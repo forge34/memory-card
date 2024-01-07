@@ -6,11 +6,21 @@ import { useState } from "react";
 export default function Cardcontainer({ setScore }) {
   const [animEnd, setAnimEnd] = useState(false);
   const [startAnim ,setAnimStart] = useState(true)
+  const [cardList ,setCardList] = useState(new Array(0))
+  const [lost,setLost] = useState(false)
 
   function handleClick(name) {
-    setScore((prev) => prev + 1);
     setAnimEnd(false)
     setAnimStart(true)
+
+    if (!cardList.includes(name)){
+      setCardList([...cardList,name])
+      setScore((prev) => prev + 1);
+    }
+    else {
+      setScore(0)
+      setLost(true)
+    }
   }
 
   function handleAnimEnd() {
@@ -32,6 +42,8 @@ export default function Cardcontainer({ setScore }) {
       <Card {...probs}></Card>
       <Card {...probs}></Card>
       <Card {...probs}></Card>
+
+      {lost && <h1 className="lose-text">You lost</h1>}
     </div>
   );
 }

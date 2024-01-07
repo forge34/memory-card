@@ -5,3 +5,11 @@
     grid-template-areas: 
     "c1 c2 c3 c4";
 }
+
+.lose-text {
+    font-size: 5em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+}
